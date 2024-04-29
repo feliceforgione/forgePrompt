@@ -103,3 +103,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Docker Compose
 
 - `docker compose up -d`
+
+# Setup
+
+## Sell Products
+
+- Enable NEXT_PUBLIC_ENABLESHOPPING in `env` file
+- Add products to invetory.ts file. These values are used for the stripe checkout page
