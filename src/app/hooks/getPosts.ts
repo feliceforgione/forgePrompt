@@ -39,7 +39,9 @@ export async function getPost(slug: string = "") {
   );
 }
 
-export async function getPosts(searchParams: SearchParams = {}) {
+export async function getPosts(
+  searchParams: SearchParams = {}
+): Promise<GetPostQueryResult[]> {
   const { date, title, category, postType, search, tag } = searchParams;
 
   const postFilter = `_type=="post"`;

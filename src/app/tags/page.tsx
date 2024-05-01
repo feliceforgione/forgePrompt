@@ -1,10 +1,10 @@
 import TagsCloud from "../components/TagsCloud";
-import { getTags } from "../hooks/getTags";
+import { getTagCounts } from "../hooks/getTags";
 
 export const revalidate = 60; // nextjs will revalidate this page every 60 seconds
 
 async function Page() {
-  const tags = await getTags();
+  const tags = await getTagCounts();
 
   return (
     <div className="h-[60svh] flex items-center justify-center">

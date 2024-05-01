@@ -10,10 +10,28 @@ import { SiteBlob } from "./components/SiteBlob";
 import { Providers } from "./components/Providers";
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: "Forge Prompt",
+    locale: "en-US",
+    type: "website",
+    images: [
+      {
+        url: `${siteConfig.url}/open-graph.png`,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 

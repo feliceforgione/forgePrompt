@@ -2,22 +2,53 @@ import Share from "@/app/components/Share";
 import Tags from "@/app/components/Tags";
 import getPortableTextComponents from "@/app/hooks/getPortableTextComponents";
 import { getPost } from "@/app/hooks/getPosts";
+import { siteConfig } from "@/config/site";
 import { PortableText } from "@portabletext/react";
 import { urlForImage } from "@root/sanity/lib/image";
 import { shimmer, toBase64 } from "@root/src/lib/image";
 import Head from "next/head";
 import Image from "next/image";
 
-interface Props {
+interface Params {
   params: {
     slug: string;
   };
 }
-export const revalidate = 60; // nextjs will revalidate this page every 60 seconds
-
-export default async function Page({ params }: Props) {
+export async function generateMetadata({ params }: Params) {
   const { slug } = params;
   const post = await getPost(slug);
+  if (!post) {
+    return;
+  }
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `${siteConfig.url}/posts/${slug}`,
+      siteName: "Forge Prompt",
+      locale: "en-US",
+      type: "article",
+      images: [
+        {
+          url:
+            urlForImage(post.mainImage!.asset!) ||
+            `${siteConfig.url}/open-graph.png`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
+
+export const revalidate = 60; // nextjs will revalidate this page every 60 seconds
+
+export default async function Page({ params }: Params) {
+  const { slug } = params;
+  const post = await getPost(slug);
+  console.log(post);
 
   const myPortableTextComponents = getPortableTextComponents;
 
