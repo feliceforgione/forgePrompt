@@ -83,7 +83,8 @@ export default async function Page({ params }: Params) {
               className="h-full w-full object-cover object-center"
             />
           </div>
-          <div className="text-gray-600 text-lg my-4 dark:text-gray-400">
+
+          <div className={richTextStyles}>
             <PortableText value={body!} components={myPortableTextComponents} />
             <Tags tags={tags} />
           </div>
@@ -97,3 +98,14 @@ export default async function Page({ params }: Params) {
     </main>
   );
 }
+
+const richTextStyles = `
+mt-14
+text-justify
+max-w-4xl
+m-auto
+prose
+prose-zinc
+prose-lg
+dark:prose-invert
+`;
