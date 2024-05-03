@@ -1,3 +1,4 @@
+import TableOfContents from "@/app/components/posts/TableOfContents";
 import Share from "@/app/components/Share";
 import Tags from "@/app/components/Tags";
 import getPortableTextComponents from "@/app/hooks/getPortableTextComponents";
@@ -48,17 +49,16 @@ export const revalidate = 60; // nextjs will revalidate this page every 60 secon
 export default async function Page({ params }: Params) {
   const { slug } = params;
   const post = await getPost(slug);
-  console.log(post);
 
   const myPortableTextComponents = getPortableTextComponents;
 
   if (!post) {
     return <div>Post not found</div>;
   }
-  const { title, body, mainImage, publishedAt, author, tags } = post;
+  const { title, body, mainImage, publishedAt, author, tags, headings } = post;
 
   return (
-    <main className="mx-auto max-w-5xl sm:px-6 sm:pt-16 lg:px-8">
+    <main className="mx-auto max-w-5xl  sm:px-6 sm:pt-16 lg:px-8">
       <div className="mx-auto max-w-2xl lg:max-w-none">
         <Head>
           <title>{title}</title>
@@ -84,6 +84,11 @@ export default async function Page({ params }: Params) {
             />
           </div>
 
+          {headings && headings.length > 1 && (
+            <div className="float-right  my-8 mx-4 ">
+              <TableOfContents headings={headings} />
+            </div>
+          )}
           <div className={richTextStyles}>
             <PortableText value={body!} components={myPortableTextComponents} />
             <Tags tags={tags} />
@@ -107,5 +112,6 @@ m-auto
 prose
 prose-zinc
 prose-lg
+prose-headings:scroll-mt-16
 dark:prose-invert
 `;

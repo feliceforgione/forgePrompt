@@ -29,10 +29,16 @@ const postFields = `
   excerpt,
   body`;
 
-export async function getPost(slug: string = "") {
-  const getPostQuery = groq`*[_type == "post" && slug.current == "${slug}"][0] {${postFields}}`;
+const headings = `"headings": body[style in ["h2", "h3", "h4", "h5"]]`;
 
-  return await client.fetch<GetPostQueryResult>(
+type GetPostQueryResultWithHeadings = GetPostQueryResult & {
+  headings?: Array<string | HTMLHeadElement>;
+};
+
+export async function getPost(slug: string = "") {
+  const getPostQuery = groq`*[_type == "post" && slug.current == "${slug}"][0] {${postFields}, ${headings}}`;
+
+  return await client.fetch<GetPostQueryResultWithHeadings>(
     getPostQuery,
     {},
     { cache: cache }
