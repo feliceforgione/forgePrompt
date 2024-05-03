@@ -1,112 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
 
-## Setup Packages
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<img src="src/images/logo.png" alt="Logo" >
 
-### Prettier
+  <h3 align="center">The latest ai and prompt engineering info</h3>
 
-- added `.prettierrc.json` config file
-- added `.prettierignore` ignore file
-- added prettier script command to `package.json`
+  <p align="center"> 
+    <a href="https://forgeprompt.ai">View Site</a>
+    ·
+    <a href="https://github.com/feliceforgione/forgeprompt/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/feliceforgione/forgeprompt/issues">Request Feature</a>
+  </p>
+</div>
 
-### Eslint
+<!-- ABOUT THE PROJECT -->
 
-- using the version that comes with next.js
+## About The Project
 
-### Husky
+<img src="src/images/screenshot.jpg" alt="screenshot" >
+<br><br>
 
-- added a `pre-commit` file that runs lint-staged command
-- added a `pre-push` file that runs tests
+###
 
-### Lint Staged
+<br>
 
-- added `.lintstagedrc.json` config file to tell what files to run eslint and prettier on
+## Built With
 
-## Validation
+|                                  |                                            |                                           |
+| -------------------------------- | :----------------------------------------: | ----------------------------------------: |
+| [React 18](https://reactjs.org/) | [React Router 6](https://reactrouter.com/) | [PostgreSQL](https://www.postgresql.org/) |
 
-### Zod
+<!-- ROADMAP -->
+<br />
 
-## Utils
+# Features
 
-### Error Handling Function
+-
 
-- returns a function to wrap a function in try catch block and handle various errors (Zod, Error, Custom)
+<!-- ROADMAP -->
+<br />
 
-## Testing
+## Getting Started
 
-### Vitest
+- Create a `.env` file using `.env-sample` and using your own keys
 
-- created a `tests` folder in root. Place tests here.
-  - added a `setup.ts` file to simplify testing
-- added test command in `package.json`
-- added test:ui command in `package.json`
-  - visit http://localhost:51204/**vitest**/
-- added coverage command in `package.json`
-  - `coverage` folder added to root.
-    - right click on the `index.html` file and open in browser
-  - Added `coverage` folder to `.gitignore`
-- updated `vitest.config.ts` file
-  - added global flag to true
-  - added setupFiles list
-- updated `tsconfig.json`
-  - added "types": ["vitest/globals"]
+- Install packages `npm install`
 
-### React Testing Library
+<br>
 
-### JSDOM
+## Roadmap
 
-- DOM emulator
-- Added `vitest.config.ts` to setup testing environment
+- [x]
 
-### @testing-library/jest-dom
+<br>
 
-- Adds DOM related matchers and assertions
+See the [open issues](https://github.com/feliceforgione/forgeprompt/issues) for a full list of proposed features (and known issues).
 
-## Docker
+<br>
 
-## Postgres Database
+<!-- CONTRIBUTING -->
 
-- docker image
-- update env values
+## Contributing
 
-## Prisma
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-- update env values
-- create models in `./prisma/schema.prisma`
-- push models to database using `npx migrate dev --name migrationName`
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-### Edit `next.config.mjs`
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-- Add the following output option
-  ```
-  const nextConfig = {
-    output: "standalone",
-  };
-  ```
+<br>
+<!-- CONTACT -->
 
-### Build the image
+## Contact
 
-- `docker build . -t nextjs-app`
+Felice Forgione - [@forgione67](https://twitter.com/forgione67)
 
-### Start the docker
-
-- `docker run -p 3000:3000 nextjs-app`
-
-## Miscellaneous
-
-## .vscode folder
-
-- added a `settings.json` file
-  - adds a files.associations rule for tailwind
-
-# Usage
-
-## Docker Compose
-
-- `docker compose up -d`
-
-# Setup
-
-## Sell Products
-
-- Enable NEXT_PUBLIC_ENABLESHOPPING in `env` file
-- Add products to invetory.ts file. These values are used for the stripe checkout page
+Project Link: [https://github.com/feliceforgione/forgePrompt](https://github.com/feliceforgione/forgeprompt)
