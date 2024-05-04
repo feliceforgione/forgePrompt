@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import * as THREE from "three";
 import SimplexNoise from "simplex-noise";
+import Logo from "../Logo";
 //import chroma from "./chroma.min.js";   // Only needed for GUI
 
 /* 
@@ -299,13 +300,7 @@ function HeroCanvas() {
       )}
       <div className="px-4 pt-20  flex flex-col items-center">
         <Link href="/">
-          <Image
-            src="/images/logo.png"
-            alt="Logo"
-            width={220}
-            height={220}
-            className="relative"
-          />
+          <Logo />
         </Link>
         <p className="mx-auto mt-4 max-w-3xl text-base">
           The latest ai and prompt engineering info

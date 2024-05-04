@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<img src="src/images/logo.png" alt="Logo" >
+<img src="public/logo.svg" alt="Logo" >
 
   <h3 align="center">The latest ai and prompt engineering info</h3>
 
