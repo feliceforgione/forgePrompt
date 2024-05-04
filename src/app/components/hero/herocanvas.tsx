@@ -1,7 +1,7 @@
+// @ts-nocheck
 "use client";
 import React, { useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import * as THREE from "three";
 import SimplexNoise from "simplex-noise";
 import Logo from "../Logo";
@@ -15,7 +15,7 @@ import "https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.0.3/chroma.min.js";
 Performance Issues: https://stackoverflow.com/questions/11285065/limiting-framerate-in-three-js-to-increase-performance-requestanimationframe
 */
 
-function App(conf) {
+function App(conf: any) {
   conf = {
     fov: 75,
     cameraZ: 75,

@@ -48,7 +48,6 @@ export const revalidate = 60; // nextjs will revalidate this page every 60 secon
 export default async function Page({ params }: Params) {
   const { slug } = params;
   const post = await getPost(slug);
-  console.log(post);
 
   const myPortableTextComponents = getPortableTextComponents;
 

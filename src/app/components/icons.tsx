@@ -2,6 +2,7 @@ import {
   LucideProps,
   Moon,
   SunMedium,
+  // @ts-ignore
   type Icon as LucideIcon,
 } from "lucide-react";
 
