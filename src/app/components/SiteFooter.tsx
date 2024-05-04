@@ -20,9 +20,6 @@ export function SiteFooter() {
               </Link>
             </div>
           ))}
-          <div className="pb-6">
-            <button onClick={clearCart}>empty cart</button>
-          </div>
         </nav>
         <Link
           href="https://www.fullstack.so"
