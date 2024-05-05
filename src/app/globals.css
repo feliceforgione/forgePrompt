@@ -100,3 +100,7 @@
 .productDescription p {
   @apply text-justify leading-7 mb-4;
 }
+
+.pageTitle {
+  @apply font-extrabold text-3xl mb-10 uppercase;
+}
