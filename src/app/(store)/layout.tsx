@@ -1,4 +1,4 @@
-import StoreClosed from "../components/StoreClosed";
+import StoreClosed from "./_components/StoreClosed";
 
 export default function ProductsLayout({
   children,

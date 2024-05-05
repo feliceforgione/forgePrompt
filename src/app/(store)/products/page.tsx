@@ -1,8 +1,4 @@
-import { client } from "@root/sanity/lib/client";
-import { groq } from "next-sanity";
-
-import { cn } from "@/utils/utils";
-import { getProducts } from "../hooks/getProducts";
+import { getProducts } from "@/app/hooks/getProducts";
 import { ProductGrid } from "./components/ProductGrid";
 
 export default async function Page() {
