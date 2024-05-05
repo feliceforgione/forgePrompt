@@ -17,7 +17,7 @@ export const siteConfig = {
   url: "https://www.forgeprompt.ai",
   footer: [
     { name: "Home", href: "/" },
-    { name: "About", href: "#" },
+    { name: "About", href: "/about" },
     ...footerShopLinks,
   ],
 };
