@@ -7,7 +7,17 @@ import author from "./schemaTypes/author";
 import product from "./schemaTypes/product";
 import siteSettings from "./schemaTypes/siteSettings";
 import tag from "./schemaTypes/tag";
+import comment from "./schemaTypes/comment";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, category, blockContent, product, tag, siteSettings],
+  types: [
+    post,
+    author,
+    category,
+    blockContent,
+    comment,
+    product,
+    tag,
+    siteSettings,
+  ],
 };

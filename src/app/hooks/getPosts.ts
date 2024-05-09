@@ -11,6 +11,14 @@ export interface SearchParams {
   search?: string;
 }
 
+export interface IComment {
+  name: string;
+  email: string;
+  comment: string;
+  _id: string;
+  _createdAt: string;
+}
+
 const cache = "default";
 
 const postFields = `
@@ -30,15 +38,17 @@ const postFields = `
   body`;
 
 const headings = `"headings": body[style in ["h2", "h3", "h4", "h5"]]`;
+const comments = `"comments": *[_type == "comment" && post._ref == ^._id] | order(_createdAt desc) {name, comment, _createdAt, _id}`;
 
-type GetPostQueryResultWithHeadings = GetPostQueryResult & {
+type GetPostQueryResultExpanded = GetPostQueryResult & {
   headings?: Array<string | HTMLHeadElement>;
+  comments?: IComment[];
 };
 
 export async function getPost(slug: string = "") {
-  const getPostQuery = groq`*[_type == "post" && slug.current == "${slug}"][0] {${postFields}, ${headings}}`;
+  const getPostQuery = groq`*[_type == "post" && slug.current == "${slug}"][0] {${postFields}, ${headings}, ${comments}}`;
 
-  return await client.fetch<GetPostQueryResultWithHeadings>(
+  return await client.fetch<GetPostQueryResultExpanded>(
     getPostQuery,
     {},
     { cache: cache }
