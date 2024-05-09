@@ -4,7 +4,8 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import * as THREE from "three";
 import SimplexNoise from "simplex-noise";
-import Logo from "../Logo";
+import { Icons } from "@/app/components/icons";
+
 //import chroma from "./chroma.min.js";   // Only needed for GUI
 
 /* 
@@ -299,9 +300,7 @@ function HeroCanvas() {
         </form>
       )}
       <div className="px-4 pt-20  flex flex-col items-center">
-        <Link href="/">
-          <Logo />
-        </Link>
+        <Icons.logo />
         <p className="mx-auto mt-4 max-w-3xl text-base">
           The latest ai and prompt engineering info
         </p>

@@ -1,3 +1,5 @@
+import AddComment from "@/app/components/comments/AddComment";
+import AllComments from "@/app/components/comments/AllComments";
 import TableOfContents from "@/app/components/posts/TableOfContents";
 import Share from "@/app/components/Share";
 import Tags from "@/app/components/Tags";
@@ -9,7 +11,7 @@ import { urlForImage } from "@root/sanity/lib/image";
 import { shimmer, toBase64 } from "@root/src/lib/image";
 import Head from "next/head";
 import Image from "next/image";
-
+import { Icons } from "@/app/components/icons";
 interface Params {
   params: {
     slug: string;
@@ -33,9 +35,9 @@ export async function generateMetadata({ params }: Params) {
       type: "article",
       images: [
         {
-          url:
-            urlForImage(post.mainImage!.asset!) ||
-            `${siteConfig.url}/open-graph.png`,
+          url: post.mainImage
+            ? urlForImage(post.mainImage?.asset!)
+            : `${siteConfig.url}/open-graph.png`,
           width: 1200,
           height: 630,
         },
@@ -71,17 +73,23 @@ export default async function Page({ params }: Params) {
             <span>By {author?.name}</span>
           </div>
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
-            <Image
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(900, 600)
-              )}`}
-              src={urlForImage(mainImage!.asset!)}
-              alt={mainImage?.alt || "Post image"}
-              width={900}
-              height={600}
-              className="h-full w-full object-cover object-center"
-            />
+            {mainImage ? (
+              <Image
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(900, 600)
+                )}`}
+                src={urlForImage(mainImage!.asset!)}
+                alt={mainImage?.alt || "Post image"}
+                width={900}
+                height={600}
+                className="h-full w-full object-cover object-center"
+              />
+            ) : (
+              <div className="h-full w-full object-cover object-center">
+                {Icons.defaultImagePlaceholder({})}{" "}
+              </div>
+            )}
           </div>
 
           {headings && headings.length > 1 && (
@@ -98,6 +106,12 @@ export default async function Page({ params }: Params) {
             shareUrl={`${process.env.NEXT_PUBLIC_DOMAIN}/posts/${slug}`}
             title={title}
           />
+          <div className="mt-14">
+            <AddComment postId={post?._id} />
+          </div>
+          <div className="mt-8">
+            <AllComments comments={post?.comments} />
+          </div>
         </article>
       </div>
     </main>
