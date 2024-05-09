@@ -97,10 +97,21 @@
   border-radius: 3px;
 }
 
+.alertBlock {
+  @apply bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md;
+}
+
 .productDescription p {
   @apply text-justify leading-7 mb-4;
 }
 
 .pageTitle {
   @apply font-extrabold text-3xl mb-10 uppercase;
+}
+
+.formErrorMessage {
+  @apply text-red-600 text-sm;
+}
+.formCommentInput {
+  @apply p-2 bg-amber-100 dark:bg-slate-800;
 }
