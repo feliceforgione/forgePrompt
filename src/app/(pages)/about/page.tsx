@@ -11,7 +11,7 @@ function Page() {
           alt={"profile pic"}
           width="500"
           height="500"
-          className="w-64 h-64 rounded-full self-center ring-8 ring-blue-100"
+          className="w-64 h-64 rounded-full self-center ring-8 ring-blue-100 shadow-xl"
         />
 
         <div className="flex-1 px-4">

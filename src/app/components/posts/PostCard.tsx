@@ -19,13 +19,13 @@ function PostCard({ post }: Props) {
         <Image
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(225, 280)
+            shimmer(450, 560)
           )}`}
           src={urlForImage(mainImage!.asset!)}
           alt={mainImage?.alt || "Post image"}
-          width={225}
-          height={280}
-          className="h-full w-full object-cover object-center"
+          width={450}
+          height={560}
+          className="h-72 w-full object-cover object-center"
         />
       </div>
       <h3 className="mt-4 font-medium">{title}</h3>
