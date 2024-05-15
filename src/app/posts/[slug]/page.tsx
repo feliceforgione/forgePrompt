@@ -128,4 +128,12 @@ prose-zinc
 prose-lg
 prose-headings:scroll-mt-16
 dark:prose-invert
+
+prose-table:min-w-full prose-table:m-0 prose-table:divide-y prose-table:divide-gray-200 prose-table:dark:divide-neutral-700
+
+prose-thead:bg-gray-50 prose-thead:dark:bg-neutral-700
+
+prose-th:px-6 prose-th:py-3 prose-th:text-start prose-th:font-medium prose-th:text-gray-500 prose-th:uppercase prose-th:dark:text-neutral-400
+
+prose-td:px-6 py-4  prose-td:text-sm prose-td:text-gray-800 prose-td:dark:text-neutral-200
 `;

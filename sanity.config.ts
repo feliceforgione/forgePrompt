@@ -10,6 +10,7 @@ import { structureTool } from "sanity/structure";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schema";
 import { codeInput } from "@sanity/code-input";
+import { table } from "@sanity/table";
 
 export default defineConfig({
   basePath: "/studio",
@@ -40,5 +41,6 @@ export default defineConfig({
     }),
     visionTool({ defaultApiVersion: apiVersion }),
     codeInput(),
+    table(),
   ],
 });

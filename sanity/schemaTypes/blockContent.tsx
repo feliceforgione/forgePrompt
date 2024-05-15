@@ -1,5 +1,5 @@
-import { Highlighter, CircleAlert } from "lucide-react";
 import { defineType, defineArrayMember } from "sanity";
+import { HighlightIcon, ThLargeIcon, BulbOutlineIcon } from "@sanity/icons";
 
 /**
  * This is the schema type for block content used in the post document type
@@ -43,7 +43,7 @@ export default defineType({
           {
             title: "Highlight",
             value: "highlight",
-            icon: Highlighter,
+            icon: HighlightIcon,
             component: (props) => (
               <span className="highlightTextColor">{props.children}</span>
             ),
@@ -51,7 +51,7 @@ export default defineType({
           {
             title: "Alert",
             value: "alert",
-            icon: CircleAlert,
+            icon: BulbOutlineIcon,
             component: (props) => (
               <div className="alertBlock">{props.children}</div>
             ),
@@ -91,12 +91,16 @@ export default defineType({
     }),
     defineArrayMember({
       name: "code",
-      title: "Code Block",
+      title: "Code",
       type: "code",
       options: {
-        withFilename: true, // optional
-        // optional
+        withFilename: true,
       },
+    }),
+    defineArrayMember({
+      name: "table",
+      type: "table",
+      icon: ThLargeIcon,
     }),
   ],
 });

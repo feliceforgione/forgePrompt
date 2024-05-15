@@ -15,6 +15,34 @@ const myPortableTextComponents = {
       />
     ),
     code: ({ value }: any) => <CodeBlock codeblock={value} />,
+    table: ({ value }: any) => {
+      const headerRow = value.rows[0];
+      const bodyRows = value.rows.slice(1);
+      return (
+        <div className="border rounded-lg shadow overflow-hidden dark:border-neutral-700 dark:shadow-gray-900">
+          <table>
+            <thead>
+              <tr>
+                {headerRow.cells.map((cell: string) => (
+                  <th scope="col" key={cell}>
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row: any) => (
+                <tr key={row._key}>
+                  {row.cells.map((cell: string) => (
+                    <td key={cell}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
   },
   block: {
     h2: ({ value }: any) => (
