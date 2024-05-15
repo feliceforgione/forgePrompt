@@ -45,6 +45,13 @@ const myPortableTextComponents = {
     highlight: ({ children, value }: any) => {
       return <span className="highlightTextColor">{children}</span>;
     },
+    alert: ({ children, value }: any) => {
+      return (
+        <div className="alertBlock">
+          <div className="flex py-1">{children}</div>
+        </div>
+      );
+    },
   },
 };
 

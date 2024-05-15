@@ -1,4 +1,4 @@
-import { Highlighter } from "lucide-react";
+import { Highlighter, CircleAlert } from "lucide-react";
 import { defineType, defineArrayMember } from "sanity";
 
 /**
@@ -46,6 +46,14 @@ export default defineType({
             icon: Highlighter,
             component: (props) => (
               <span className="highlightTextColor">{props.children}</span>
+            ),
+          },
+          {
+            title: "Alert",
+            value: "alert",
+            icon: CircleAlert,
+            component: (props) => (
+              <div className="alertBlock">{props.children}</div>
             ),
           },
           //{ title: "Code", value: "code" },
