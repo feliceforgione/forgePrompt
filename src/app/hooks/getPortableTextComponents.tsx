@@ -57,6 +57,7 @@ const myPortableTextComponents = {
     h5: ({ value }: any) => (
       <h5 id={slugify(value.children[0].text)}>{value.children[0].text}</h5>
     ),
+    pre: ({ value }: any) => <pre>{value.children[0].text}</pre>,
   },
 
   marks: {

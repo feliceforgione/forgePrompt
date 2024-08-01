@@ -115,3 +115,19 @@
 .formCommentInput {
   @apply p-2 bg-amber-100 dark:bg-slate-800;
 }
+
+pre {
+  background: #b4b3b3 !important;
+  color: #3f0101 !important;
+  border-left: 5px solid #0825df;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 0.5em !important;
+  display: block;
+  word-wrap: break-word;
+}
