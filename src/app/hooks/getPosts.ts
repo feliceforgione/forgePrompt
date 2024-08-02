@@ -74,7 +74,9 @@ export async function getPosts(
   const orderDate = date ? `publishedAt ${date}` : "";
   const orderTitle = title ? `title ${title}` : "";
   const order = orderDate || orderTitle;
-  const orderClause = order && ` | order(${order})`;
+  const orderClause = order
+    ? ` | order(${order})`
+    : ` | order(publishedAt desc)`;
 
   return await client.fetch(
     groq`*[${filter}] ${orderClause} {${postFields}}`,
