@@ -131,3 +131,7 @@ pre {
   display: block;
   word-wrap: break-word;
 }
+
+p:empty {
+  height: 1em;
+}
