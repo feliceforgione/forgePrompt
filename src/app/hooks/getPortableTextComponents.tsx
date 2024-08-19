@@ -81,6 +81,9 @@ const myPortableTextComponents = {
         </div>
       );
     },
+    backticks: ({ children }: any) => (
+      <span className="backtick">{children}</span>
+    ),
   },
 };
 

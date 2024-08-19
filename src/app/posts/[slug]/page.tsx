@@ -123,6 +123,7 @@ mt-14
 text-justify
 max-w-4xl
 m-auto
+
 prose
 prose-zinc
 prose-lg
@@ -136,4 +137,6 @@ prose-thead:bg-gray-50 prose-thead:dark:bg-neutral-700
 prose-th:px-6 prose-th:py-3 prose-th:text-start prose-th:font-medium prose-th:text-gray-500 prose-th:uppercase prose-th:dark:text-neutral-400
 
 prose-td:px-6 py-4  prose-td:text-sm prose-td:text-gray-800 prose-td:dark:text-neutral-200
+
+whitespace-pre-line
 `;

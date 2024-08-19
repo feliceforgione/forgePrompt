@@ -132,6 +132,11 @@ pre {
   word-wrap: break-word;
 }
 
+.backtick {
+  color: #d53984;
+  font-style: italic;
+}
+
 p:empty {
   height: 1em;
 }

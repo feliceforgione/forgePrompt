@@ -1,5 +1,10 @@
 import { defineType, defineArrayMember } from "sanity";
-import { HighlightIcon, ThLargeIcon, BulbOutlineIcon } from "@sanity/icons";
+import {
+  HighlightIcon,
+  ThLargeIcon,
+  BulbOutlineIcon,
+  CodeIcon,
+} from "@sanity/icons";
 
 /**
  * This is the schema type for block content used in the post document type
@@ -62,6 +67,14 @@ export default defineType({
             icon: BulbOutlineIcon,
             component: (props) => (
               <div className="alertBlock">{props.children}</div>
+            ),
+          },
+          {
+            title: "BackTicks",
+            value: "backticks",
+            icon: CodeIcon,
+            component: (props) => (
+              <span className="backtick">{props.children}</span>
             ),
           },
           //{ title: "Code", value: "code" },
