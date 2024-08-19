@@ -57,7 +57,7 @@ export function CartSummary() {
           </dd>
         </div>
         <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
-          <dt className="text-base font-medium">Order Toal</dt>
+          <dt className="text-base font-medium">Order Total</dt>
           <dd className="text-base font-medium">
             {formatCurrencyString({ value: totalAmount, currency: "usd" })}
           </dd>
