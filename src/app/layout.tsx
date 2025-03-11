@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Head from "next/head";
+import Script from "next/script";
 import "./globals.css";
 
 import { cn } from "@/utils/utils";
@@ -43,13 +43,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <script
-          defer
-          src="https://umami.forgeai.dev/script.js"
-          data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
-        ></script>
-      </Head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -64,6 +57,11 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </Providers>
+        <Script
+          defer
+          src="https://umami.forgeai.dev/script.js"
+          data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
+        ></Script>
       </body>
     </html>
   );
