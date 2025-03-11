@@ -57,12 +57,12 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </Providers>
-        <Script
-          defer
-          src="https://umami.forgeai.dev/script.js"
-          data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
-        ></Script>
       </body>
+      <Script
+        async
+        src="https://umami.forgeai.dev/script.js"
+        data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
+      ></Script>
     </html>
   );
 }
