@@ -42,27 +42,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <Providers>
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
-            <SiteBlob />
-            <div className="flex-1">{children}</div>
-            <SiteFooter />
-          </div>
-        </Providers>
-      </body>
+    <>
       <Script
         defer
         src="https://umami.forgeai.dev/script.js"
         data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
-      ></Script>
-    </html>
+      />
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable
+          )}
+        >
+          <Providers>
+            <div className="relative flex min-h-screen flex-col">
+              <SiteHeader />
+              <SiteBlob />
+              <div className="flex-1">{children}</div>
+              <SiteFooter />
+            </div>
+          </Providers>
+        </body>
+      </html>
+    </>
   );
 }
