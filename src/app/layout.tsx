@@ -43,11 +43,6 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <Script
-        defer
-        src="https://umami.forgeai.dev/script.js"
-        data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
-      />
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
