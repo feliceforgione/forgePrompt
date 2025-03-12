@@ -46,7 +46,7 @@ export default function RootLayout({
       <Script
         defer
         src="https://umami.forgeai.dev/script.js"
-        data-website-id="32b7fc12-4feb-41eb-af47-656269a1e4c5"
+        data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID!}
       />
       <html lang="en" suppressHydrationWarning>
         <body
