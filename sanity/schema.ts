@@ -8,6 +8,8 @@ import product from "./schemaTypes/product";
 import siteSettings from "./schemaTypes/siteSettings";
 import tag from "./schemaTypes/tag";
 import comment from "./schemaTypes/comment";
+import youtubeEmbed from "./schemaTypes/youtubeEmbed";
+import { postSettings } from "./schemaTypes/post";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +21,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     product,
     tag,
     siteSettings,
+    youtubeEmbed,
+    postSettings,
   ],
 };

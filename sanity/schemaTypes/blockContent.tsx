@@ -1,10 +1,12 @@
-import { defineType, defineArrayMember } from "sanity";
+import { defineType, defineField, defineArrayMember } from "sanity";
 import {
   HighlightIcon,
   ThLargeIcon,
   BulbOutlineIcon,
   CodeIcon,
 } from "@sanity/icons";
+
+import youtubeEmbed from "./youtubeEmbed";
 
 /**
  * This is the schema type for block content used in the post document type
@@ -126,6 +128,10 @@ export default defineType({
       name: "table",
       type: "table",
       icon: ThLargeIcon,
+    }),
+    defineArrayMember({
+      type: "youtubeEmbed",
+      title: "YouTube Embed",
     }),
   ],
 });

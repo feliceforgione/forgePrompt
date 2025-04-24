@@ -57,7 +57,16 @@ export default async function Page({ params }: Params) {
   if (!post) {
     return <div>Post not found</div>;
   }
-  const { title, body, mainImage, publishedAt, author, tags, headings } = post;
+  const {
+    title,
+    body,
+    mainImage,
+    publishedAt,
+    author,
+    tags,
+    headings,
+    settings,
+  } = post;
 
   return (
     <main className="mx-auto max-w-5xl  sm:px-6 sm:pt-16 lg:px-8">
@@ -72,8 +81,9 @@ export default async function Page({ params }: Params) {
             <span>{new Date(publishedAt!).toDateString()}</span>
             <span>By {author?.name}</span>
           </div>
-          <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
-            {mainImage ? (
+          {/* Conditionally render main image based on settings */}
+          {mainImage && !settings?.hideMainImage && (
+            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
               <Image
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
@@ -85,18 +95,17 @@ export default async function Page({ params }: Params) {
                 height={600}
                 className="h-full w-full object-cover object-center"
               />
-            ) : (
-              <div className="h-full w-full object-cover object-center">
-                {Icons.defaultImagePlaceholder({})}{" "}
-              </div>
-            )}
-          </div>
-
-          {headings && headings.length > 1 && (
-            <div className="float-right  my-8 mx-4 ">
-              <TableOfContents headings={headings} />
             </div>
           )}
+
+          {/* Conditionally render table of contents based on settings */}
+          {headings &&
+            headings.length > 1 &&
+            !settings?.hideTableOfContents && (
+              <div className="float-right  my-8 mx-4 ">
+                <TableOfContents headings={headings} />
+              </div>
+            )}
           <div className={richTextStyles}>
             <PortableText value={body!} components={myPortableTextComponents} />
             <Tags tags={tags} />
@@ -104,7 +113,7 @@ export default async function Page({ params }: Params) {
 
           <Share
             shareUrl={`${process.env.NEXT_PUBLIC_DOMAIN}/posts/${slug}`}
-            title={title}
+            title={title!}
           />
           <div className="mt-14">
             <AddComment postId={post?._id} />
@@ -119,7 +128,6 @@ export default async function Page({ params }: Params) {
 }
 
 const richTextStyles = `
-mt-14
 text-justify
 max-w-4xl
 m-auto

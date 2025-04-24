@@ -1,6 +1,28 @@
 import { defineField, defineType } from "sanity";
 import { Newspaper } from "lucide-react";
 
+export const postSettings = defineType({
+  name: "postSettings",
+  title: "Post Settings",
+  type: "object",
+  fields: [
+    defineField({
+      name: "hideMainImage",
+      title: "Hide Main Image",
+      type: "boolean",
+      description:
+        "If enabled, the main image will not be displayed on the post page.",
+    }),
+    defineField({
+      name: "hideTableOfContents",
+      title: "Hide Table of Contents",
+      type: "boolean",
+      description:
+        "If enabled, the table of contents will not be displayed on the post page.",
+    }),
+  ],
+});
+
 export default defineType({
   name: "post",
   title: "Post",
@@ -87,6 +109,11 @@ export default defineType({
       name: "body",
       title: "Body",
       type: "blockContent",
+    }),
+    defineField({
+      name: "settings",
+      title: "Settings",
+      type: "postSettings",
     }),
   ],
 

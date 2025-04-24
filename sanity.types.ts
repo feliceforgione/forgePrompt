@@ -68,6 +68,11 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type YoutubeEmbed = {
+  _type: "youtubeEmbed";
+  url?: string;
+};
+
 export type SiteSettings = {
   _id: string;
   _type: "siteSettings";
@@ -83,6 +88,7 @@ export type SiteSettings = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -96,8 +102,8 @@ export type Tag = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  slug: Slug;
+  title?: string;
+  slug?: Slug;
 };
 
 export type Product = {
@@ -106,19 +112,20 @@ export type Product = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name: string;
-  slug: Slug;
+  name?: string;
+  slug?: Slug;
   publishedAt?: string;
   sku?: string;
-  currency: string;
-  price: number;
-  images: Array<{
+  currency?: string;
+  price?: number;
+  images?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -133,8 +140,8 @@ export type Product = {
           _type: "span";
           _key: string;
         }>;
-        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-        listItem?: "bullet";
+        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote" | "pre";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           href?: string;
           _type: "link";
@@ -151,6 +158,7 @@ export type Product = {
           _weak?: boolean;
           [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
         };
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         alt?: string;
@@ -160,7 +168,30 @@ export type Product = {
     | ({
         _key: string;
       } & Code)
+    | ({
+        _key: string;
+      } & Table)
+    | ({
+        _key: string;
+      } & YoutubeEmbed)
   >;
+};
+
+export type Comment = {
+  _id: string;
+  _type: "comment";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  email?: string;
+  comment?: string;
+  post?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "post";
+  };
 };
 
 export type BlockContent = Array<
@@ -171,8 +202,8 @@ export type BlockContent = Array<
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-      listItem?: "bullet";
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote" | "pre";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         href?: string;
         _type: "link";
@@ -189,6 +220,7 @@ export type BlockContent = Array<
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
@@ -198,6 +230,12 @@ export type BlockContent = Array<
   | ({
       _key: string;
     } & Code)
+  | ({
+      _key: string;
+    } & Table)
+  | ({
+      _key: string;
+    } & YoutubeEmbed)
 >;
 
 export type Category = {
@@ -206,8 +244,8 @@ export type Category = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  slug: Slug;
+  title?: string;
+  slug?: Slug;
   description?: string;
 };
 
@@ -217,8 +255,8 @@ export type Post = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  slug: Slug;
+  title?: string;
+  slug?: Slug;
   author?: {
     _ref: string;
     _type: "reference";
@@ -248,6 +286,7 @@ export type Post = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -255,6 +294,13 @@ export type Post = {
   };
   excerpt?: string;
   body?: BlockContent;
+  settings?: PostSettings;
+};
+
+export type PostSettings = {
+  _type: "postSettings";
+  hideMainImage?: boolean;
+  hideTableOfContents?: boolean;
 };
 
 export type Author = {
@@ -272,6 +318,7 @@ export type Author = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -356,8 +403,22 @@ export type SanityImageMetadata = {
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
+};
+
+export type Table = {
+  _type: "table";
+  rows?: Array<
+    {
+      _key: string;
+    } & TableRow
+  >;
+};
+
+export type TableRow = {
+  _type: "tableRow";
+  cells?: Array<string>;
 };
 
 export type Code = {
@@ -367,16 +428,41 @@ export type Code = {
   code?: string;
   highlightedLines?: Array<number>;
 };
-export declare const internalGroqTypeReferenceTo: unique symbol;
 
+export type AllSanitySchemaTypes =
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityFileAsset
+  | Geopoint
+  | YoutubeEmbed
+  | SiteSettings
+  | Tag
+  | Product
+  | Comment
+  | BlockContent
+  | Category
+  | Post
+  | PostSettings
+  | Author
+  | SanityImageCrop
+  | SanityImageHotspot
+  | SanityImageAsset
+  | SanityAssetSourceData
+  | SanityImageMetadata
+  | Slug
+  | Table
+  | TableRow
+  | Code;
+export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/app/hooks/getPosts.ts
 // Variable: getPostQuery
-// Query: *[_type == "post" && slug.current == ""][0] {  _id,  publishedAt,  title,  "slug":slug.current,  author-> {    name,    image  },  postType,  'categories': categories[]->,  'tags': tags[]->,  mainImage,  excerpt,  body}
+// Query: *[_type == "post" && slug.current == ""][0] {  _id,  publishedAt,  title,  "slug":slug.current,  author-> {    name,    image  },  postType,  'categories': categories[]->,  'tags': tags[]->,  mainImage,  settings,  excerpt,  body, "headings": body[style in ["h2", "h3", "h4", "h5"]], "comments": *[_type == "comment" && post._ref == ^._id] | order(_createdAt desc) {name, comment, _createdAt, _id}}
 export type GetPostQueryResult = {
   _id: string;
   publishedAt: string | null;
-  title: string;
-  slug: string;
+  title: string | null;
+  slug: string | null;
   author: {
     name: string | null;
     image: {
@@ -386,6 +472,7 @@ export type GetPostQueryResult = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
@@ -399,8 +486,8 @@ export type GetPostQueryResult = {
     _createdAt: string;
     _updatedAt: string;
     _rev: string;
-    title: string;
-    slug: Slug;
+    title?: string;
+    slug?: Slug;
     description?: string;
   }> | null;
   tags: Array<{
@@ -409,8 +496,8 @@ export type GetPostQueryResult = {
     _createdAt: string;
     _updatedAt: string;
     _rev: string;
-    title: string;
-    slug: Slug;
+    title?: string;
+    slug?: Slug;
   }> | null;
   mainImage: {
     asset?: {
@@ -419,11 +506,45 @@ export type GetPostQueryResult = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   } | null;
+  settings: PostSettings | null;
   excerpt: string | null;
   body: BlockContent | null;
+  headings: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal" | "pre";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  comments: Array<{
+    name: string | null;
+    comment: string | null;
+    _createdAt: string;
+    _id: string;
+  }>;
 } | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_type == "post" && slug.current == ""][0] {\n  _id,\n  publishedAt,\n  title,\n  "slug":slug.current,\n  author-> {\n    name,\n    image\n  },\n  postType,\n  \'categories\': categories[]->,\n  \'tags\': tags[]->,\n  mainImage,\n  settings,\n  excerpt,\n  body, "headings": body[style in ["h2", "h3", "h4", "h5"]], "comments": *[_type == "comment" && post._ref == ^._id] | order(_createdAt desc) {name, comment, _createdAt, _id}}': GetPostQueryResult;
+  }
+}

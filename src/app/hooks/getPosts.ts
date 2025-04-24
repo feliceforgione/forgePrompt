@@ -34,6 +34,7 @@ const postFields = `
   'categories': categories[]->,
   'tags': tags[]->,
   mainImage,
+  settings,
   excerpt,
   body`;
 

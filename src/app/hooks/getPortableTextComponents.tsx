@@ -2,6 +2,7 @@ import CodeBlock from "@/app/components/CodeBlock";
 import { slugify } from "@/utils/utils";
 import { urlForImage } from "@root/sanity/lib/image";
 import Image from "next/image";
+import YoutubeEmbed from "../components/YoutubeEmbed";
 
 const myPortableTextComponents = {
   types: {
@@ -43,6 +44,7 @@ const myPortableTextComponents = {
         </div>
       );
     },
+    youtubeEmbed: YoutubeEmbed,
   },
   block: {
     h2: ({ value }: any) => (

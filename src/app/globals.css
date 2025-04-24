@@ -140,3 +140,20 @@ pre {
 p:empty {
   height: 1em;
 }
+
+.youtube-embed-container {
+  position: relative;
+  width: 100%;
+  /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
+  margin-bottom: 1.5rem; /* Optional: Space below the embed */
+  float: left;
+}
+
+.youtube-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
