@@ -1,12 +1,12 @@
 [phases.setup]
-nixPkgs = ['bun']
-aptPkgs = ['build-essential']
+node = { version = "20" }
+#aptPkgs = ['build-essential'] # Keep build-essential if needed for native modules
 
 [phases.install]
-cmds = ["bun install"]
+cmds = ["npm install"]
 
 [phases.build]
-cmds = ["bun run build"]
+cmds = ["npm run build"]
 
 [start]
-cmd = "bun run start"
+cmd = "npm start"

@@ -15,7 +15,7 @@ function Page() {
         />
 
         <div className="flex-1 px-4">
-          Hi, Im Felice Forgione I’m a creative, detail-oriented problem solver
+          Hi, Im Felice Forgione I am a creative, detail-oriented problem solver
           with a deep interest in developing healthcare web applications and
           have a growing interest in AI technology. I am also a clinical
           research Pharmacist that was responsible for the clinical data
