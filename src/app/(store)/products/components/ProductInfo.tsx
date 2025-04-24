@@ -25,10 +25,11 @@ export function ProductInfo({ product }: Props) {
 
   const cartItem: CartProduct = {
     id: _id,
-    name,
-    currency,
-    price,
-    image: urlForImage(images[0]!.asset!),
+    name: name!,
+    currency: currency!,
+    price: price!,
+    quantity: 1,
+    image: urlForImage(images![0].asset!),
     slug,
 
     product_data: {
@@ -61,8 +62,8 @@ export function ProductInfo({ product }: Props) {
         <h2 className="sr-only">Product information</h2>
         <p className="text-3xl tracking-tight">
           {formatCurrencyString({
-            value: price,
-            currency: currency,
+            value: price!,
+            currency: currency!,
           })}
         </p>
       </div>

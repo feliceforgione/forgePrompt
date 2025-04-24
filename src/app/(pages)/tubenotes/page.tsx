@@ -65,11 +65,13 @@ function Page() {
             </li>
             <li>
               <strong>Policy Changes</strong> We may update this Privacy Policy
-              periodically. Any changes will be reflected in the Extension. By
-              using TubeNotes, you acknowledge and agree to these terms and
-              policies.
+              periodically. Any changes will be reflected in the Extension.
             </li>
           </ul>
+          <p className="pt-4">
+            By using TubeNotes, you acknowledge and agree to these terms and
+            policies.
+          </p>
         </div>
       </div>
     </>

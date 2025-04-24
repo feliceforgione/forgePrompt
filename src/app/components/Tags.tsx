@@ -11,7 +11,7 @@ function Tags({ tags }: Props) {
   return (
     <div>
       {tags?.map((tag) => (
-        <Link key={tag._id} href={`/tags/${tag.slug.current}`}>
+        <Link key={tag._id} href={`/tags/${tag.slug!.current}`}>
           <span className="mr-2 p-1 text-sm lowercase rounded-sm">
             #{tag.title}
           </span>

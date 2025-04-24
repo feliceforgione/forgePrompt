@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const tagUrls = tags.map((tag) => ({
-    url: `${siteConfig.url}/tags/${tag?.slug.current}`,
+    url: `${siteConfig.url}/tags/${tag?.slug!.current}`,
     lastModified: new Date(),
   }));
 
